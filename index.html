@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Northeast Private Client Group — Investment Sales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     PALETTE & TYPE — NPCG INSTITUTIONAL
+     ========================================================= */
+  :root {
+    --carbon: #3F4753;
+    --stone: #B1A8A0;
+    --graphite: #281B12;
+    --terra: #B55D37;
+    --orange: #F8971D;
+    --linen: #F1ECE5;        /* slightly stronger linen for visible alternation */
+    --paper: #FFFFFF;
+    --ink: #1A1F2A;
+    --rule: #E5DFD7;
+    --rule-strong: #D6CEC4;
+
+    --serif: 'Fraunces', 'Times New Roman', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #2a2a2a;
+    font-family: var(--sans);
+    color: var(--carbon);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+  }
+
+  body {
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  /* =========================================================
+     PAGE
+     ========================================================= */
+  .page {
+    width: 1020px;
+    height: 1320px;
+    background: var(--paper);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.5),
+                0 10px 30px -10px rgba(0,0,0,0.3);
+    color: var(--carbon);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Subtle paper grain */
+  .page::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.11 0 0 0 0 0.07 0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    background-size: 200px 200px;
+    pointer-events: none;
+    opacity: 0.6;
+    mix-blend-mode: multiply;
+    z-index: 10;
+  }
+
+  /* Vertical orange spine */
+  .page::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 16px;
+    background: linear-gradient(180deg, var(--orange) 0%, var(--orange) 70%, var(--terra) 100%);
+    z-index: 5;
+  }
+
+  /* =========================================================
+     SECTION BANDS — alternating white / linen
+     ========================================================= */
+  .band {
+    position: relative;
+    padding: 0 56px 0 72px;        /* extra left padding to clear the orange spine */
+    z-index: 2;
+  }
+  .band--paper { background: var(--paper); }
+  .band--linen { background: var(--linen); }
+
+  /* =========================================================
+     HEADER (paper)
+     ========================================================= */
+  .head {
+    padding-top: 32px;
+    padding-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .head__logo {
+    height: 64px;
+    width: auto;
+    display: block;
+  }
+
+  .head__meta {
+    text-align: right;
+  }
+  .head__doc-id {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--stone);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .head__doc-id span { color: var(--carbon); }
+  .head__services {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    color: var(--carbon);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .head__services em {
+    color: var(--orange);
+    font-style: normal;
+    margin: 0 8px;
+  }
+  .head__url {
+    font-family: var(--serif);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--terra);
+    font-style: italic;
+    letter-spacing: 0.01em;
+  }
+
+  /* =========================================================
+     HERO (paper) — Who We Are
+     ========================================================= */
+  .hero {
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  .hero__eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--carbon);
+    margin-bottom: 22px;
+  }
+  .hero__eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  .hero__headline {
+    font-family: var(--serif);
+    font-variation-settings: 'opsz' 144, 'SOFT' 100;
+    font-size: 76px;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    font-weight: 400;
+    margin-bottom: 28px;
+  }
+  .hero__headline .accent {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--orange);
+  }
+  .hero__headline .line-2 {
+    display: block;
+    margin-top: -2px;
+  }
+
+  .hero__deck {
+    max-width: 760px;
+    font-family: var(--serif);
+    font-variation-settings: 'opsz' 14;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--carbon);
+    font-weight: 400;
+    letter-spacing: 0.005em;
+  }
+  .hero__deck strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* =========================================================
+     STATS BAND (linen)
+     ========================================================= */
+  .stats {
+    padding-top: 36px;
+    padding-bottom: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+  }
+
+  .stat {
+    padding-right: 24px;
+    border-left: 1px solid var(--rule-strong);
+    padding-left: 24px;
+  }
+  .stat:first-child {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .stat__index {
+    font-family: var(--mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: var(--stone);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+
+  .stat__figure {
+    font-family: var(--serif);
+    font-variation-settings: 'opsz' 144;
+    font-size: 64px;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+  .stat__figure .small {
+    font-size: 38px;
+    letter-spacing: -0.02em;
+    color: var(--orange);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .stat__rule {
+    width: 28px;
+    height: 2px;
+    background: var(--orange);
+    margin: 14px 0 12px 0;
+  }
+
+  .stat__label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--carbon);
+    margin-bottom: 2px;
+  }
+  .stat__sublabel {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  /* =========================================================
+     TERRITORY BAND (paper) — Coverage
+     ========================================================= */
+  .territory {
+    padding-top: 44px;
+    padding-bottom: 44px;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+  }
+
+  .territory__lhs {
+    padding-top: 4px;
+  }
+
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--carbon);
+    margin-bottom: 22px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    width: 32px;
+    height: 1px;
+    background: var(--orange);
+    flex-shrink: 0;
+  }
+
+  .territory__lede {
+    font-family: var(--serif);
+    font-variation-settings: 'opsz' 24;
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+    margin-bottom: 28px;
+  }
+
+  .markets {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .market {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    align-items: baseline;
+    column-gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .market:last-child { border-bottom: none; }
+
+  .market__num {
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--orange);
+  }
+  .market__name {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  /* Territory map */
+  .territory__map {
+    position: relative;
+    background: var(--linen);
+    border: 1px solid var(--rule);
+    aspect-ratio: 16 / 11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .territory__map img {
+    width: 88%;
+    height: auto;
+    display: block;
+  }
+  .territory__map::before,
+  .territory__map::after {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border: 1px solid var(--carbon);
+  }
+  .territory__map::before {
+    top: 8px; left: 8px;
+    border-right: none;
+    border-bottom: none;
+  }
+  .territory__map::after {
+    bottom: 8px; right: 8px;
+    border-left: none;
+    border-top: none;
+  }
+  .territory__map-cap {
+    position: absolute;
+    bottom: 12px;
+    left: 16px;
+    font-family: var(--mono);
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .territory__map-cap span { color: var(--carbon); }
+
+  /* =========================================================
+     QUOTE BAND (linen) — closing pull-quote
+     ========================================================= */
+  .quote {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    border-top: 1px solid var(--rule-strong);
+  }
+
+  .quote__body {
+    padding-left: 24px;
+    border-left: 2px solid var(--orange);
+    font-family: var(--serif);
+    font-variation-settings: 'opsz' 144;
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    letter-spacing: -0.012em;
+  }
+  .quote__body em {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--orange);
+  }
+
+  .quote__badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
+  .quote__badge img {
+    height: 44px;
+    width: auto;
+    display: block;
+    /* very subtle - no filters, just clean */
+  }
+  .quote__badge-cap {
+    font-family: var(--mono);
+    font-size: 8px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--stone);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* =========================================================
+     FOOTER (paper)
+     ========================================================= */
+  .foot {
+    margin-top: auto;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .foot__left {
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+  }
+  .foot__brand {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--terra);
+  }
+  .foot__brand::before {
+    content: '◆ ';
+    color: var(--orange);
+    font-size: 9px;
+    font-style: normal;
+  }
+  .foot__tag {
+    font-size: 8.5px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+  .foot__right {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--carbon);
+  }
+  .foot__right span {
+    color: var(--orange);
+    margin: 0 6px;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ========== HEADER (paper) ========== -->
+  <header class="band band--paper head">
+    <img src="logo.jpeg" alt="Northeast Private Client Group" class="head__logo">
+    <div class="head__meta">
+      <div class="head__doc-id">CO/PROFILE <span>·</span> NPCG <span>·</span> 2026</div>
+      <div class="head__services">Investment Sales <em>/</em> Advisory <em>/</em> Capital Markets</div>
+      <div class="head__url">northeastpcg.com</div>
+    </div>
+  </header>
+
+  <!-- ========== HERO (paper) ========== -->
+  <section class="band band--paper hero">
+    <div class="hero__eyebrow">Who We Are</div>
+
+    <h1 class="hero__headline">
+      Institutional expertise.<br>
+      <span class="line-2">Private capital <span class="accent">focus.</span></span>
+    </h1>
+
+    <p class="hero__deck">
+      <strong>Northeast Private Client Group</strong>® is a relationship-first commercial real estate brokerage that brings institutional-grade expertise and personalized service to private investors throughout the Northeast. For over fifteen years, we have consistently outperformed the regional investment sales sector by leveraging deep submarket knowledge, a proprietary database, and a trusted network that connects sellers with qualified buyers.
+    </p>
+  </section>
+
+  <!-- ========== STATS (linen) ========== -->
+  <section class="band band--linen stats">
+    <div class="stat">
+      <div class="stat__index">Transactions</div>
+      <div class="stat__figure">1,400<span class="small">+</span></div>
+      <div class="stat__rule"></div>
+      <div class="stat__label">Closed Deals</div>
+      <div class="stat__sublabel">Across all asset classes</div>
+    </div>
+    <div class="stat">
+      <div class="stat__index">Volume</div>
+      <div class="stat__figure">$4.6<span class="small">B</span></div>
+      <div class="stat__rule"></div>
+      <div class="stat__label">Total Sales Volume</div>
+      <div class="stat__sublabel">Cumulative through 2025</div>
+    </div>
+    <div class="stat">
+      <div class="stat__index">Recognition</div>
+      <div class="stat__figure">Top 10</div>
+      <div class="stat__rule"></div>
+      <div class="stat__label">Fastest-Growing CRE Firm</div>
+      <div class="stat__sublabel">Northeast region</div>
+    </div>
+  </section>
+
+  <!-- ========== TERRITORY (paper) ========== -->
+  <section class="band band--paper territory">
+    <div class="territory__lhs">
+      <div class="section-eyebrow">Coverage</div>
+
+      <p class="territory__lede">
+        Three integrated territories.<br>
+        One disciplined team.
+      </p>
+
+      <div class="markets">
+        <div class="market">
+          <div class="market__num">→</div>
+          <div class="market__name">CT / NY Metro North</div>
+        </div>
+        <div class="market">
+          <div class="market__num">→</div>
+          <div class="market__name">Central CT / Western MA</div>
+        </div>
+        <div class="market">
+          <div class="market__num">→</div>
+          <div class="market__name">Boston / Providence</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="territory__map">
+      <img src="territory_full.png" alt="Northeast Private Client Group territory map">
+      <div class="territory__map-cap">FIG. <span>—</span> NORTHEAST CORRIDOR</div>
+    </div>
+  </section>
+
+  <!-- ========== QUOTE + COSTAR (linen) ========== -->
+  <section class="band band--linen quote">
+    <p class="quote__body">
+      Helping you make <em>the right decision</em>, at <em>the right time</em> — driving results that maximize your real estate investment.
+    </p>
+    <div class="quote__badge">
+      <img src="costar.png" alt="CoStar Power Broker — Top Broker Award">
+      <div class="quote__badge-cap">Recipient · Top Broker Award</div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER (paper) ========== -->
+  <footer class="band band--paper foot">
+    <div class="foot__left">
+      <div class="foot__brand">Northeast Private Client Group®</div>
+      <div class="foot__tag">Building Relationships That Drive Results</div>
+    </div>
+    <div class="foot__right">
+      Investment Sales <span>·</span> Advisory <span>·</span> Capital Markets
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
