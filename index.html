@@ -88,15 +88,6 @@ body {
   background: #ffffff;
   position: relative; overflow: hidden;
 }
-/* top-right corner triangle */
-.head::after {
-  content: '';
-  position: absolute; top: 0; right: 0;
-  border-style: solid;
-  border-width: 0 13mm 13mm 0;
-  border-color: transparent rgba(248,151,29,0.38) transparent transparent;
-  z-index: 3;
-}
 .head__logo     { height: 16mm; width: auto; display: block; }
 .head__meta     { display: flex; align-items: center; gap: 5mm; }
 .head__sep      { width: 0.3mm; height: 4.5mm; background: var(--stone); flex-shrink: 0; }
@@ -133,12 +124,12 @@ body {
   z-index: 1;
 }
 .hero-coverage__left {
-  padding: 7mm 9mm 31mm 14mm;
+  padding: 7mm 9mm 34mm 14mm;
   background: var(--linen);
   position: relative; z-index: 2;
 }
 .hero-coverage__right {
-  padding: 7mm 14mm 31mm 9mm;
+  padding: 7mm 14mm 34mm 9mm;
   background: #ffffff;
   display: flex; flex-direction: column;
   position: relative; z-index: 2;
@@ -197,7 +188,7 @@ body {
   display: grid; grid-template-columns: 1fr 1fr 1fr;
   position: relative; overflow: hidden;
   border-top: 1.5mm solid var(--orange);
-  background: linear-gradient(150deg, #343f4d 0%, var(--carbon) 60%, #2e3742 100%);
+  background: var(--carbon);
 }
 /* rotated outline square — upper right */
 .stats::before {
@@ -229,13 +220,13 @@ body {
   margin-bottom: 2.5mm; opacity: 0.9;
 }
 .stat__figure {
-  font-size: 20pt; line-height: 1; letter-spacing: -0.03em;
+  font-size: 18pt; line-height: 1; letter-spacing: -0.03em;
   color: #ffffff; font-weight: 800; margin-bottom: 3mm;
   text-shadow: 0 0 14mm rgba(248,151,29,0.22);
 }
 .stat__figure .small       { font-size: 13pt; color: var(--orange); font-weight: 700; }
-.stat__figure .stat__plus  { font-size: 20pt; color: #ffffff; font-weight: 700; vertical-align: baseline; }
-.stat__figure .small--light { font-size: 13pt; color: #ffffff; font-weight: 700; text-transform: uppercase; }
+.stat__figure .stat__plus  { font-size: 18pt; color: #ffffff; font-weight: 700; vertical-align: baseline; }
+.stat__figure .small--light { font-size: 18pt; color: #ffffff; font-weight: 700; }
 .stat__label {
   font-size: 8pt; font-weight: 400; letter-spacing: 0.1em;
   text-transform: uppercase; color: rgba(246,242,238,0.92);
@@ -245,14 +236,15 @@ body {
 
 /* ── TRACK RECORD ─────────────────────────────── */
 .deals {
-  padding-top: 6mm; padding-bottom: 7mm;
+  padding-top: 3mm; padding-bottom: 7mm; padding-left: 8mm; padding-right: 8mm;
   display: grid; grid-template-columns: 1fr 1fr; gap: 4mm;
 }
 .deals__head {
   grid-column: 1 / -1;
   display: flex; justify-content: space-between; align-items: flex-end;
-  padding-bottom: 1mm; border-bottom: 0.4mm solid rgba(40,27,18,0.22);
+  padding-bottom: 3mm; border-bottom: 0.4mm solid rgba(40,27,18,0.22);
 }
+.deals__head .section-eyebrow { margin-top: 2.5mm; margin-bottom: 1.5mm; }
 .deal {
   background: var(--linen);
   border: 0.3mm solid rgba(40,27,18,0.18);
@@ -290,12 +282,14 @@ body {
 }
 .deal__head { display: flex; justify-content: space-between; align-items: baseline; }
 .deal__type {
-  font-size: 8pt; font-weight: 700;
-  letter-spacing: 0.24em; color: var(--stone); text-transform: uppercase;
+  font-size: 7.5pt; font-weight: 700;
+  letter-spacing: 0.05em; color: var(--stone); text-transform: uppercase;
+  white-space: nowrap;
 }
 .deal__name {
-  font-size: 9pt; line-height: 1.15;
+  font-size: 11pt; line-height: 1.15;
   color: var(--graphite); font-weight: 700; letter-spacing: -0.01em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .deal__loc {
   font-size: 8pt; font-weight: 600; letter-spacing: 0.1em;
@@ -304,15 +298,15 @@ body {
 .deal__divider { height: 0.3mm; background: rgba(40,27,18,0.15); margin: 1mm 0; }
 .deal__metrics { display: flex; flex-direction: column; gap: 1.5mm; }
 .deal__metric-label {
-  font-size: 8pt; font-weight: 700;
+  font-size: 7.5pt; font-weight: 700;
   letter-spacing: 0.2em; color: var(--stone); text-transform: uppercase;
   margin-bottom: 0.8mm;
 }
 .deal__metric-value {
-  font-size: 10pt; font-weight: 800;
+  font-size: 9pt; font-weight: 800;
   color: var(--graphite); letter-spacing: -0.01em;
 }
-.deal__metric-value .small { font-size: 8.5pt; color: var(--orange); font-weight: 700; }
+.deal__metric-value .small { font-size: 8pt; color: var(--orange); font-weight: 700; }
 
 /* ── FOOTER QUOTE ─────────────────────────────── */
 .quote {
@@ -321,14 +315,6 @@ body {
   display: flex; align-items: center; justify-content: space-between; gap: 8mm;
   background: var(--linen);
   position: relative; overflow: hidden;
-}
-/* corner triangle — bottom right */
-.quote::after {
-  content: '';
-  position: absolute; bottom: 0; right: 0;
-  border-style: solid;
-  border-width: 0 0 14mm 14mm;
-  border-color: transparent transparent rgba(248,151,29,0.2) transparent;
 }
 .quote__body {
   padding-left: 4mm; border-left: 1.5mm solid var(--orange);
@@ -441,7 +427,7 @@ body {
             <div class="deal__metric-value">$5,695,000</div>
           </div>
           <div>
-            <div class="deal__metric-label">Sq. Ft.</div>
+            <div class="deal__metric-label">SF</div>
             <div class="deal__metric-value">45,133</div>
           </div>
         </div>
@@ -470,7 +456,7 @@ body {
             <div class="deal__metric-value">$4,750,000</div>
           </div>
           <div>
-            <div class="deal__metric-label">Sq. Ft.</div>
+            <div class="deal__metric-label">SF</div>
             <div class="deal__metric-value">9,402</div>
           </div>
         </div>
@@ -490,7 +476,7 @@ body {
         <div class="deal__head">
           <div class="deal__type">Multifamily</div>
         </div>
-        <div class="deal__name">Chestnut Street Townhomes</div>
+        <div class="deal__name">Chestnut St. Townhomes</div>
         <div class="deal__loc">Danbury, CT</div>
         <div class="deal__divider"></div>
         <div class="deal__metrics">
