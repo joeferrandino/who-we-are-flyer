@@ -85,7 +85,7 @@ body {
   padding-top: 6.5mm; padding-bottom: 6.5mm;
   display: flex; justify-content: space-between; align-items: center;
   border-bottom: 0.8mm solid var(--orange);
-  background: var(--linen);
+  background: #ffffff;
   position: relative; overflow: hidden;
 }
 .head__logo     { height: 15mm; width: auto; display: block; }
@@ -129,7 +129,7 @@ body {
 .hero__headline .dot { color: var(--carbon); font-style: normal; }
 .hero__deck {
   font-size: 10pt; line-height: 1.6;
-  color: var(--carbon); font-weight: 400;
+  color: var(--graphite); font-weight: 400;
   text-align: justify;
 }
 .hero__deck strong { font-weight: 700; color: var(--graphite); }
@@ -151,7 +151,7 @@ body {
 /* Coverage description + bullets */
 .territory__desc {
   font-size: 10pt; line-height: 1.55;
-  color: var(--carbon); font-weight: 400; margin-top: 3mm;
+  color: var(--graphite); font-weight: 400; margin-top: 3mm;
 }
 .territory__bullets {
   list-style: none; margin-top: 2mm;
@@ -159,7 +159,7 @@ body {
 }
 .territory__bullets li {
   font-size: 10pt; line-height: 1.4;
-  color: var(--carbon); font-weight: 400;
+  color: var(--graphite); font-weight: 400;
   padding-left: 4mm; position: relative;
 }
 .territory__bullets li::before {
@@ -217,7 +217,7 @@ body {
 /* Description */
 .stat__label {
   font-size: 8pt; font-weight: 400; letter-spacing: 0.02em;
-  color: rgba(63,71,83,0.55); line-height: 1.2;
+  color: var(--graphite); line-height: 1.2;
 }
 
 /* ── TRACK RECORD ─────────────────────────────── */
@@ -232,7 +232,7 @@ body {
 }
 .deals__head .section-eyebrow { margin-top: 0; margin-bottom: 0; }
 .deal {
-  background: var(--linen);
+  background: #ffffff;
   border: 0.3mm solid rgba(40,27,18,0.18);
   border-top: 0.8mm solid var(--terra);
   display: flex; flex-direction: row;
@@ -265,24 +265,29 @@ body {
 .deal__body {
   padding: 3.5mm 4mm;
   display: flex; flex-direction: column; gap: 1mm;
+  flex: 1;
 }
 .deal__head { display: flex; justify-content: space-between; align-items: baseline; }
 .deal__type {
-  font-size: 7.5pt; font-weight: 700;
-  letter-spacing: 0.05em; color: var(--stone); text-transform: uppercase;
+  font-size: 6.5pt; font-weight: 700;
+  letter-spacing: 0.05em; color: var(--orange); text-transform: uppercase;
   white-space: nowrap;
 }
 .deal__name {
   font-size: 11pt; line-height: 1.15;
-  color: var(--graphite); font-weight: 700; letter-spacing: -0.01em;
+  color: var(--carbon); font-weight: 700; letter-spacing: -0.01em;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .deal__loc {
   font-size: 8pt; font-weight: 600; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--carbon);
+  text-transform: uppercase; color: var(--stone);
 }
 .deal__divider { height: 0.3mm; background: rgba(40,27,18,0.15); margin: 1mm 0; }
-.deal__metrics { display: flex; flex-direction: column; gap: 1.5mm; }
+.deal__metrics {
+  display: flex; flex-direction: row;
+  justify-content: space-between; align-items: flex-end;
+  margin-top: auto;
+}
 .deal__metric-label {
   font-size: 7.5pt; font-weight: 700;
   letter-spacing: 0.2em; color: var(--stone); text-transform: uppercase;
@@ -292,12 +297,23 @@ body {
   font-size: 9pt; font-weight: 800;
   color: var(--graphite); letter-spacing: -0.01em;
 }
-.deal__metric-value .small { font-size: 8pt; color: var(--orange); font-weight: 700; }
+.deal__metrics > div:first-child .deal__metric-value::before {
+  content: '';
+  display: inline-block;
+  width: 4mm; height: 0.6mm;
+  background: var(--orange);
+  margin-right: 1.5mm;
+  vertical-align: middle;
+}
+.deal__metric-value .small { font-size: 7pt; color: var(--graphite); font-weight: 600; }
+.deal__metrics > div:last-child .deal__metric-value {
+  font-size: 7.5pt; color: var(--graphite); font-weight: 600; text-align: right;
+}
 
 /* ── FOOTER QUOTE ─────────────────────────────── */
 .quote {
   margin-top: auto;
-  border-top: 0.8mm solid var(--stone);
+  border-top: 0.8mm solid var(--orange);
   padding-top: 5mm; padding-bottom: 5mm;
   display: flex; align-items: center; justify-content: space-between; gap: 8mm;
   background: var(--linen);
@@ -446,12 +462,10 @@ body {
         <div class="deal__divider"></div>
         <div class="deal__metrics">
           <div>
-            <div class="deal__metric-label">Sale Price</div>
             <div class="deal__metric-value">$5,695,000</div>
           </div>
           <div>
-            <div class="deal__metric-label">SF</div>
-            <div class="deal__metric-value">45,133</div>
+            <div class="deal__metric-value">45,133 <span class="small">SF</span></div>
           </div>
         </div>
       </div>
@@ -470,12 +484,10 @@ body {
         <div class="deal__divider"></div>
         <div class="deal__metrics">
           <div>
-            <div class="deal__metric-label">Sale Price</div>
             <div class="deal__metric-value">$4,750,000</div>
           </div>
           <div>
-            <div class="deal__metric-label">SF</div>
-            <div class="deal__metric-value">9,402</div>
+            <div class="deal__metric-value">9,402 <span class="small">SF</span></div>
           </div>
         </div>
       </div>
@@ -494,12 +506,10 @@ body {
         <div class="deal__divider"></div>
         <div class="deal__metrics">
           <div>
-            <div class="deal__metric-label">Sale Price</div>
             <div class="deal__metric-value">$2,400,000</div>
           </div>
           <div>
-            <div class="deal__metric-label">SF</div>
-            <div class="deal__metric-value">13,965</div>
+            <div class="deal__metric-value">13,965 <span class="small">SF</span></div>
           </div>
         </div>
       </div>
@@ -518,12 +528,10 @@ body {
         <div class="deal__divider"></div>
         <div class="deal__metrics">
           <div>
-            <div class="deal__metric-label">Sale Price</div>
             <div class="deal__metric-value">$3,325,000</div>
           </div>
           <div>
-            <div class="deal__metric-label">Units</div>
-            <div class="deal__metric-value">12</div>
+            <div class="deal__metric-value">12 <span class="small">Units</span></div>
           </div>
         </div>
       </div>
