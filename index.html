@@ -185,6 +185,7 @@ body {
 
 /* ── STATS ────────────────────────────────────── */
 .stats {
+  counter-reset: stat-ord;
   padding-top: 1mm; padding-bottom: 8mm;
   display: grid; grid-template-columns: 1fr 1fr 1fr;
   position: relative; overflow: hidden;
@@ -193,29 +194,49 @@ body {
   background: var(--carbon);
 }
 .stat {
-  padding: 3mm 7mm 0;
-  border-right: 0.3mm solid rgba(246,242,238,0.15);
+  padding: 3mm 8mm 0;
+  border-right: 0.3mm solid rgba(246,242,238,0.10);
   position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  overflow: hidden;
 }
-.stat:last-child { border-right: none; padding-right: 3mm; }
+.stat:last-child { border-right: none; padding-right: 8mm; }
+
+/* Ghost ordinal "01 / 02 / 03" — depth element, bottom-right of each cell */
+.stat::after {
+  counter-increment: stat-ord;
+  content: "0" counter(stat-ord);
+  position: absolute; bottom: -4mm; right: 1mm;
+  font-size: 52pt; font-weight: 800; letter-spacing: -0.06em;
+  color: rgba(246,242,242,0.07); line-height: 1;
+  font-family: var(--sans);
+  z-index: 0; pointer-events: none;
+}
+
+/* Category label — small orange identifier at top */
 .stat__index {
-  font-size: 8pt; font-weight: 700; letter-spacing: 0.32em;
+  font-size: 7pt; font-weight: 700; letter-spacing: 0.28em;
   color: var(--orange); text-transform: uppercase;
-  margin-top: 1mm; margin-bottom: 2.5mm; opacity: 0.9;
+  margin-top: 1mm; margin-bottom: 2.5mm; opacity: 0.88;
 }
+
+/* Figure — dominant hero number with orange underline accent */
 .stat__figure {
-  font-size: 18pt; line-height: 1; letter-spacing: -0.03em;
-  color: #ffffff; font-weight: 800; margin-bottom: 3mm;
-  text-shadow: 0 0 14mm rgba(248,151,29,0.22);
+  font-size: 26pt; line-height: 1; letter-spacing: -0.03em;
+  color: #ffffff; font-weight: 800;
+  align-self: flex-start;
+  border-bottom: 0.5mm solid rgba(248,151,29,0.50);
+  padding-bottom: 2.5mm; margin-bottom: 2.5mm;
 }
 .stat__figure .small       { font-size: 13pt; color: var(--orange); font-weight: 700; }
-.stat__figure .stat__plus  { font-size: 18pt; color: #ffffff; font-weight: 700; vertical-align: baseline; }
-.stat__figure .small--light { font-size: 18pt; color: #ffffff; font-weight: 700; }
+.stat__figure .stat__plus  { font-size: 26pt; color: #ffffff; font-weight: 700; vertical-align: baseline; }
+.stat__figure .small--light { font-size: 26pt; color: #ffffff; font-weight: 700; }
+
+/* Description — muted, clean */
 .stat__label {
-  font-size: 8pt; font-weight: 400; letter-spacing: 0.1em;
-  text-transform: uppercase; color: rgba(246,242,238,0.92);
-  border-top: 0.8mm solid rgba(248,151,29,0.5);
-  padding-top: 2.5mm; padding-bottom: 0;
+  font-size: 8pt; font-weight: 400; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(246,242,238,0.52);
+  border-top: none; padding-top: 0; padding-bottom: 0;
 }
 
 /* ── TRACK RECORD ─────────────────────────────── */
