@@ -82,15 +82,15 @@ body {
 
 /* ── HEADER ───────────────────────────────────── */
 .head {
-  padding-top: 5.5mm; padding-bottom: 5.5mm;
+  padding-top: 6.5mm; padding-bottom: 6.5mm;
   display: flex; justify-content: space-between; align-items: center;
-  border-bottom: 0.5mm solid var(--graphite);
-  background: #ffffff;
+  border-bottom: 0.8mm solid var(--orange);
+  background: var(--linen);
   position: relative; overflow: hidden;
 }
-.head__logo     { height: 16mm; width: auto; display: block; }
+.head__logo     { height: 19mm; width: auto; display: block; }
 .head__meta     { display: flex; align-items: center; gap: 5mm; }
-.head__sep      { width: 0.3mm; height: 4.5mm; background: var(--stone); flex-shrink: 0; }
+.head__sep      { color: var(--orange); font-style: normal; font-size: 8.5pt; font-weight: 700; letter-spacing: 0; }
 .head__services {
   font-size: 8.5pt; font-weight: 700; letter-spacing: 0.18em;
   color: var(--carbon); text-transform: uppercase; line-height: 1;
@@ -139,9 +139,10 @@ body {
 /* Who We Are copy */
 .hero__headline {
   font-size: 18pt; line-height: 1.1; letter-spacing: -0.018em;
-  color: var(--graphite); font-weight: 800; margin-bottom: 5mm;
+  color: var(--carbon); font-weight: 800; margin-bottom: 5mm;
 }
-.hero__headline .accent { color: var(--terra); }
+.hero__headline .accent { color: var(--orange); }
+.hero__headline .dot { color: var(--terra); font-style: normal; }
 .hero__deck {
   font-size: 10pt; line-height: 1.6;
   color: var(--carbon); font-weight: 400;
@@ -187,29 +188,12 @@ body {
   padding-top: 1mm; padding-bottom: 8mm;
   display: grid; grid-template-columns: 1fr 1fr 1fr;
   position: relative; overflow: hidden;
-  border-top: 1.5mm solid var(--orange);
+  border-top: 0.8mm solid var(--orange);
+  border-bottom: 0.8mm solid var(--orange);
   background: var(--carbon);
 }
-/* rotated outline square — upper right */
-.stats::before {
-  content: '';
-  position: absolute; top: -12mm; right: -8mm;
-  width: 42mm; height: 42mm;
-  border: 3mm solid rgba(248,151,29,0.18);
-  transform: rotate(18deg);
-  z-index: 1;
-}
-/* corner triangle — bottom left */
-.stats::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0;
-  border-style: solid;
-  border-width: 0 0 20mm 20mm;
-  border-color: transparent transparent rgba(248,151,29,0.2) transparent;
-  z-index: 1;
-}
 .stat {
-  padding: 3mm 7mm 2.5mm;
+  padding: 3mm 7mm 0;
   border-right: 0.3mm solid rgba(246,242,238,0.15);
   position: relative; z-index: 2;
 }
@@ -217,7 +201,7 @@ body {
 .stat__index {
   font-size: 8pt; font-weight: 700; letter-spacing: 0.32em;
   color: var(--orange); text-transform: uppercase;
-  margin-bottom: 2.5mm; opacity: 0.9;
+  margin-top: 1mm; margin-bottom: 2.5mm; opacity: 0.9;
 }
 .stat__figure {
   font-size: 18pt; line-height: 1; letter-spacing: -0.03em;
@@ -231,7 +215,7 @@ body {
   font-size: 8pt; font-weight: 400; letter-spacing: 0.1em;
   text-transform: uppercase; color: rgba(246,242,238,0.92);
   border-top: 0.8mm solid rgba(248,151,29,0.5);
-  padding-top: 2.5mm;
+  padding-top: 2.5mm; padding-bottom: 0;
 }
 
 /* ── TRACK RECORD ─────────────────────────────── */
@@ -311,6 +295,7 @@ body {
 /* ── FOOTER QUOTE ─────────────────────────────── */
 .quote {
   margin-top: auto;
+  border-top: 0.8mm solid var(--orange);
   padding-top: 5mm; padding-bottom: 5mm;
   display: flex; align-items: center; justify-content: space-between; gap: 8mm;
   background: var(--linen);
@@ -327,6 +312,102 @@ body {
   text-align: center; gap: 2mm;
 }
 .quote__badge img { height: 11mm; width: auto; display: block; }
+
+/* ── DECORATIVE LAYER ─────────────────────────────────────────
+   Architectural precision system. Position absolute throughout.
+   Angles strictly 45°. z-index ≤ 2. pointer-events none.
+   ─────────────────────────────────────────────────────────── */
+
+/* Page: warm tonal field — upper-left and lower-right pools */
+.page {
+  background-image:
+    radial-gradient(ellipse 160mm 110mm at 6% 18%, rgba(177,168,160,0.10) 0%, transparent 62%),
+    radial-gradient(ellipse 140mm 110mm at 94% 82%, rgba(177,168,160,0.09) 0%, transparent 62%);
+}
+
+/* HEADER ── linen diamond bleeds upper-right */
+.head::after {
+  content: ''; position: absolute; top: -12mm; right: -12mm;
+  width: 34mm; height: 34mm;
+  border: 0.5mm solid rgba(40,27,18,0.18);
+  transform: rotate(45deg);
+  z-index: 1; pointer-events: none;
+}
+
+/* WHO WE ARE / COVERAGE ── clean directional gradients */
+.hero-coverage__left  { background: #ffffff; }
+.hero-coverage__right { background: #ffffff; }
+
+/* WHO WE ARE ── large orange outlined diamond, compositional anchor */
+.hero-coverage__left::before {
+  content: ''; position: absolute; top: 2mm; left: -22mm;
+  width: 88mm; height: 88mm;
+  border: 0.8mm solid rgba(248,151,29,0.17);
+  transform: rotate(45deg);
+  z-index: 1; pointer-events: none;
+}
+/* WHO WE ARE ── full-height carbon seam rule */
+.hero-coverage__left::after {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 0.5mm; height: 100%;
+  background: rgba(40,27,18,0.16);
+  z-index: 3; pointer-events: none;
+}
+
+/* COVERAGE ── small orange diamond punctuation, lower-left */
+.hero-coverage__right::before {
+  content: ''; position: absolute; bottom: 14mm; left: 9mm;
+  width: 5mm; height: 5mm;
+  background: var(--orange);
+  opacity: 0.38;
+  transform: rotate(45deg);
+  z-index: 1; pointer-events: none;
+}
+/* COVERAGE ── outlined diamond, lower-right bleed */
+.hero-coverage__right::after {
+  content: ''; position: absolute; bottom: -14mm; right: -12mm;
+  width: 34mm; height: 34mm;
+  border: 0.4mm solid rgba(177,168,160,0.24);
+  transform: rotate(45deg);
+  z-index: 1; pointer-events: none;
+}
+
+
+/* DEALS ── white section, linen cards */
+.deals { background: #ffffff; }
+
+/* DEALS ── large outlined diamond, lower-right anchor */
+.deals::before {
+  content: ''; position: absolute; bottom: -28mm; right: -20mm;
+  width: 72mm; height: 72mm;
+  border: 0.5mm solid rgba(177,168,160,0.24);
+  transform: rotate(30deg);
+  z-index: 1; pointer-events: none;
+}
+
+/* DEAL IMAGES ── warm stone gradient (unified, refined) */
+.deal__image {
+  background: linear-gradient(145deg, rgba(177,168,160,0.38), rgba(177,168,160,0.55));
+}
+
+/* DEAL CARDS ── position context + corner bracket */
+.deal { position: relative; }
+.deal::after {
+  content: ''; position: absolute; bottom: 0; right: 0;
+  width: 8mm; height: 8mm;
+  border-bottom: 0.6mm solid rgba(248,151,29,0.48);
+  border-right: 0.6mm solid rgba(248,151,29,0.48);
+  z-index: 2; pointer-events: none;
+}
+
+/* FOOTER ── large diamond bleeds top-left + graphite rule */
+.quote::before {
+  content: ''; position: absolute; top: -20mm; left: -16mm;
+  width: 55mm; height: 55mm;
+  border: 0.5mm solid rgba(177,168,160,0.30);
+  transform: rotate(45deg);
+  z-index: 1; pointer-events: none;
+}
 
 /* ── PRINT ────────────────────────────────────── */
 @media print {
@@ -352,7 +433,7 @@ body {
     <img src="images/NEPCG-Logo-No-Tagline-Color.png" alt="Northeast Private Client Group" class="head__logo">
     <div class="head__meta">
       <div class="head__services">Investment Sales <em>|</em> Advisory</div>
-      <div class="head__sep"></div>
+      <em class="head__sep">|</em>
       <div class="head__url">northeastpcg.com</div>
     </div>
   </header>
@@ -361,8 +442,8 @@ body {
     <div class="hero-coverage__left">
       <div class="hero__eyebrow">Who We Are</div>
       <h1 class="hero__headline">
-        Personalized Service.<br>
-        Institutional <span class="accent">Expertise.</span>
+        Personalized Service<span class="dot">.</span><br>
+        Institutional <span class="accent"><em>Expertise<span class="dot">.</span></em></span>
       </h1>
       <p class="hero__deck">
         <strong>Northeast Private Client Group</strong>® is a relationship-first commercial real estate brokerage that brings institutional-grade expertise and personalized service to private investors throughout the Northeast. For over fifteen years, we have consistently outperformed the regional investment sales sector by leveraging deep submarket knowledge, a proprietary database, and a trusted network that connects sellers with qualified buyers.
@@ -407,12 +488,7 @@ body {
 
     <div class="deal">
       <div class="deal__image">
-        <div class="deal__image-placeholder">
-          <div class="deal__image-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          </div>
-          <div class="deal__image-placeholder-label">Property Image</div>
-        </div>
+        <img src="images/deal-pleasant-valley-plaza.jpg" alt="Pleasant Valley Plaza">
       </div>
       <div class="deal__body">
         <div class="deal__head">
@@ -436,12 +512,7 @@ body {
 
     <div class="deal">
       <div class="deal__image">
-        <div class="deal__image-placeholder">
-          <div class="deal__image-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          </div>
-          <div class="deal__image-placeholder-label">Property Image</div>
-        </div>
+        <img src="images/deal-big-shop-lane.jpg" alt="Big Shop Lane">
       </div>
       <div class="deal__body">
         <div class="deal__head">
@@ -465,28 +536,23 @@ body {
 
     <div class="deal">
       <div class="deal__image">
-        <div class="deal__image-placeholder">
-          <div class="deal__image-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          </div>
-          <div class="deal__image-placeholder-label">Property Image</div>
-        </div>
+        <img src="images/deal-white-street-plaza.jpg" alt="White Street Plaza">
       </div>
       <div class="deal__body">
         <div class="deal__head">
-          <div class="deal__type">Multifamily</div>
+          <div class="deal__type">Retail</div>
         </div>
-        <div class="deal__name">Chestnut St. Townhomes</div>
+        <div class="deal__name">White Street Plaza</div>
         <div class="deal__loc">Danbury, CT</div>
         <div class="deal__divider"></div>
         <div class="deal__metrics">
           <div>
             <div class="deal__metric-label">Sale Price</div>
-            <div class="deal__metric-value">$8,475,000</div>
+            <div class="deal__metric-value">$2,400,000</div>
           </div>
           <div>
-            <div class="deal__metric-label">Units</div>
-            <div class="deal__metric-value">36</div>
+            <div class="deal__metric-label">SF</div>
+            <div class="deal__metric-value">13,965</div>
           </div>
         </div>
       </div>
@@ -494,12 +560,7 @@ body {
 
     <div class="deal">
       <div class="deal__image">
-        <div class="deal__image-placeholder">
-          <div class="deal__image-placeholder-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          </div>
-          <div class="deal__image-placeholder-label">Property Image</div>
-        </div>
+        <img src="images/deal-river-house-apartments.jpg" alt="River House Apartments">
       </div>
       <div class="deal__body">
         <div class="deal__head">
