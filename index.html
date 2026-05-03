@@ -179,7 +179,7 @@ body {
 .stats {
   counter-reset: stat-ord;
   padding-top: 0; padding-bottom: 1.5mm; padding-left: 20mm; padding-right: 20mm;
-  margin-top: -17mm;
+  margin-top: -16mm;
   display: flex; flex-direction: row;
   justify-content: center; align-items: flex-start; gap: 4mm;
   background: #ffffff;
@@ -229,7 +229,7 @@ body {
 
 /* ── TRACK RECORD ─────────────────────────────── */
 .deals {
-  padding-top: 0; padding-bottom: 6mm; padding-left: 13mm; padding-right: 13mm;
+  padding-top: 2mm; padding-bottom: 6mm; padding-left: 13mm; padding-right: 13mm;
   display: grid; grid-template-columns: 1fr 1fr; gap: 4mm;
 }
 .deals__head {
@@ -272,7 +272,7 @@ body {
 .deal__body {
   padding: 3.5mm 4mm;
   display: flex; flex-direction: column; gap: 1mm;
-  flex: 1;
+  flex: 1; position: relative;
 }
 .deal__head { display: flex; justify-content: space-between; align-items: baseline; }
 .deal__type {
@@ -286,8 +286,8 @@ body {
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .deal__loc {
-  font-size: 6.5pt; font-weight: 600; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--stone);
+  font-size: 6.5pt; font-weight: 600; letter-spacing: normal;
+  text-transform: uppercase; color: #000000;
 }
 .deal__divider { height: 0.3mm; background: rgba(40,27,18,0.15); margin: 1mm 0; }
 .deal__metrics {
@@ -313,6 +313,9 @@ body {
   vertical-align: middle;
 }
 .deal__metric-value .small { font-size: 7pt; color: var(--graphite); font-weight: 600; }
+.deal__metrics > div:last-child {
+  position: absolute; right: 4mm; bottom: 3.5mm; text-align: right;
+}
 .deal__metrics > div:last-child .deal__metric-value {
   font-size: 7.5pt; color: var(--graphite); font-weight: 600; text-align: right;
 }
@@ -335,7 +338,7 @@ body {
   display: flex; flex-direction: column; align-items: center;
   text-align: center; gap: 2mm; margin-right: -4mm;
 }
-.quote__badge img { height: 14mm; width: auto; display: block; }
+.quote__badge img { height: 11mm; width: auto; display: block; }
 
 /* ── DECORATIVE LAYER ─────────────────────────────────────────
    Architectural precision system. Position absolute throughout.
