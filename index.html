@@ -128,8 +128,8 @@ body {
   font-size: 18pt; line-height: 1.1; letter-spacing: -0.018em;
   color: #000000; font-weight: 800; margin-bottom: 5mm;
 }
-.hero__headline .accent { color: var(--orange); }
-.hero__headline .dot { color: var(--carbon); font-style: normal; }
+.hero__headline .accent { color: var(--terra); }
+.hero__headline .dot { color: #000000 !important; font-style: normal; }
 .hero__deck {
   font-size: 10pt; line-height: 1.6;
   color: var(--graphite); font-weight: 400;
@@ -175,7 +175,7 @@ body {
 .stats {
   counter-reset: stat-ord;
   padding-top: 4mm; padding-bottom: 0; padding-left: 20mm; padding-right: 20mm;
-  margin-top: -20mm;
+  margin-top: -16mm;
   display: flex; flex-direction: row;
   justify-content: center; align-items: flex-start; gap: 4mm;
   background: #ffffff;
@@ -203,10 +203,9 @@ body {
 
 /* Category label */
 .stat__index {
-  font-size: 6pt; font-weight: 700; letter-spacing: normal; line-height: 1;
+  font-size: 8pt; font-weight: 700; letter-spacing: normal; line-height: 1;
   color: #ffffff; text-transform: uppercase; opacity: 1;
-  background: #4e4b41; padding: 0.75mm 1.5mm; margin-bottom: 1mm;
-  display: flex; align-items: center; justify-content: center;
+  background: rgba(78, 75, 65, 0.75); padding: 1.2mm 1.5mm 0.5mm 1.5mm; margin-bottom: 1mm;
   border-radius: 1mm;
 }
 
@@ -324,7 +323,7 @@ body {
   margin-top: auto;
   height: 22mm;
   flex-shrink: 0;
-  padding-top: 5mm; padding-bottom: 5mm;
+  padding-top: 3.5mm; padding-bottom: 6.5mm;
   display: flex; align-items: center; justify-content: space-between; gap: 8mm;
   background: var(--linen);
   position: relative; overflow: hidden;
@@ -337,7 +336,7 @@ body {
 .quote__body em { font-style: italic; font-weight: 800; color: var(--terra); }
 .quote__badge {
   display: flex; flex-direction: column; align-items: center;
-  text-align: center; gap: 2mm; margin-right: -8mm;
+  text-align: center; gap: 2mm; margin-right: -8mm; margin-top: 2mm;
 }
 .quote__badge img { height: 11mm; width: auto; display: block; }
 
@@ -551,7 +550,7 @@ body {
 
   <footer class="band quote">
     <p class="quote__body">
-      Helping you make <em>the right decision</em>, at <em>the right time</em> — driving results that maximize your real estate investment.
+      Building Relationships That Drive Results.
     </p>
     <div class="quote__badge">
       <img src="images/CoStar_Power_Broker.png" alt="CoStar Power Broker">
