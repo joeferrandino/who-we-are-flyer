@@ -6,7 +6,7 @@
 <title>Who-We-Are-NPCG</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 
 /* ── RESET ────────────────────────────────────── */
@@ -23,7 +23,7 @@
   --terra:    #B55D37;
   --orange:   #F8971D;
   --linen:    #F6F2EE;
-  --sans:     'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --sans:     'Montserrat', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 }
 
 /* ── BASE ─────────────────────────────────────── */
@@ -90,12 +90,12 @@ body {
 }
 .head::after {
   content: ''; position: absolute; bottom: 0; left: 13mm; right: 13mm;
-  height: 2px; background: rgba(40,27,18,0.16);
+  height: 0.25mm; background: var(--stone);
 }
 .head__logo     { height: 15mm; width: auto; display: block; margin-top: 0; }
 .head__meta     { display: flex; align-items: center; gap: 2mm; margin-top: 3mm; }
-.head__item     { font-size: 7.5pt; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: #000000; line-height: 1; }
-.head__sep      { font-size: 7.5pt; font-weight: 400; color: #000000; line-height: 1; }
+.head__item     { font-size: 6pt; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; color: #000000; line-height: 1; }
+.head__sep      { font-size: 6pt; font-weight: 400; color: #000000; line-height: 1; }
 
 /* ── WHO WE ARE / COVERAGE ────────────────────── */
 .hero-coverage {
@@ -104,12 +104,12 @@ body {
   position: relative; overflow: hidden;
 }
 .hero-coverage__left {
-  padding: 5mm 9mm 26mm 13mm;
+  padding: 5mm 6mm 26mm 16mm;
   background: var(--linen);
   position: relative; z-index: 2;
 }
 .hero-coverage__right {
-  padding: 5mm 19mm 26mm 9mm;
+  padding: 5mm 22mm 26mm 6mm;
   background: #ffffff;
   display: flex; flex-direction: column;
   position: relative; z-index: 2;
@@ -126,7 +126,7 @@ body {
 .hero__headline .accent { color: var(--terra); }
 .hero__headline .dot { color: #000000 !important; font-style: normal; }
 .hero__deck {
-  font-size: 10pt; line-height: 1.6;
+  font-size: 10pt; line-height: 1.35;
   color: var(--graphite); font-weight: 400;
   text-align: justify;
 }
@@ -148,29 +148,30 @@ body {
 
 /* Coverage description + bullets */
 .territory__desc {
-  font-size: 10pt; line-height: 1.55;
+  font-size: 10pt; line-height: 1.35;
   color: var(--graphite); font-weight: 400; margin-top: 2.5mm;
 }
 .territory__bullets {
-  list-style: none; margin-top: 2mm;
-  display: flex; flex-direction: column; gap: 0.8mm;
+  list-style: none; margin-top: 1.5mm;
+  display: flex; flex-direction: column; gap: 0.4mm;
 }
 .territory__bullets li {
-  font-size: 10pt; line-height: 1.4;
+  font-size: 10pt; line-height: 1.35;
   color: var(--graphite); font-weight: 400;
-  padding-left: 4mm; position: relative;
+  display: flex; align-items: flex-start; gap: 2.5mm;
 }
 .territory__bullets li::before {
   content: '';
-  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
-  width: 5px; height: 5px; background: #000000; border-radius: 50%;
+  width: 5px; height: 5px; min-width: 5px;
+  background: #000000; border-radius: 50%;
+  margin-top: 0.35em;
 }
 
 /* ── STATS ────────────────────────────────────── */
 .stats {
   counter-reset: stat-ord;
   padding-top: 0; padding-bottom: 1.5mm; padding-left: 20mm; padding-right: 20mm;
-  margin-top: -11mm;
+  margin-top: -17mm;
   display: flex; flex-direction: row;
   justify-content: center; align-items: flex-start; gap: 4mm;
   background: #ffffff;
@@ -263,7 +264,7 @@ body {
 .deal__body {
   padding: 3.5mm 4mm;
   display: flex; flex-direction: column; gap: 1mm;
-  flex: 1; position: relative;
+  flex: 1;
 }
 .deal__head { display: flex; justify-content: space-between; align-items: baseline; }
 .deal__type {
@@ -300,10 +301,11 @@ body {
 }
 .deal__metric-value .small { font-size: 7pt; color: var(--graphite); font-weight: 400; }
 .deal__metrics > div:last-child {
-  position: absolute; right: 4mm; bottom: 3.5mm; text-align: right;
+  position: absolute; right: 4mm; bottom: 3.5mm;
+  text-align: right; white-space: nowrap;
 }
 .deal__metrics > div:last-child .deal__metric-value {
-  font-size: 7.5pt; color: var(--graphite); font-weight: 400; text-align: right;
+  font-size: 7.5pt; color: var(--graphite); font-weight: 400;
 }
 
 /* ── FOOTER QUOTE ─────────────────────────────── */
@@ -318,7 +320,7 @@ body {
 }
 .quote::before {
   content: ''; position: absolute; top: 0; left: 13mm; right: 13mm;
-  height: 0.08mm; background: rgba(40,27,18,0.16);
+  height: 0.25mm; background: var(--stone);
 }
 .quote__body {
   padding-left: 4mm; border-left: 1.5mm solid var(--orange);
@@ -351,7 +353,7 @@ body {
 
 
 /* DEALS */
-.deals { background: #ffffff; }
+.deals { background: #ffffff; flex: 1; }
 
 /* DEAL IMAGES ── warm stone gradient */
 .deal__image {
@@ -477,8 +479,8 @@ body {
       </div>
       <p class="territory__desc">Operating as one collaborative team across three territories, our clients benefit from:</p>
       <ul class="territory__bullets">
+        <li>A Wider buyer reach</li>
         <li>Premier marketing resources</li>
-        <li>Broader buyer reach, more competitive offers</li>
         <li>Expert execution at every stage of the sale</li>
       </ul>
     </div>
@@ -587,13 +589,13 @@ body {
 
     <div class="deal">
       <div class="deal__image">
-        <img id="deal-4-img" src="images/deal-river-house-apartments.jpg" alt="River House Apartments">
+        <img id="deal-4-img" src="images/deal-river-house-apartments.jpg" alt="River House">
       </div>
       <div class="deal__body">
         <div class="deal__head">
           <div class="deal__type" id="deal-4-type">Multifamily</div>
         </div>
-        <div class="deal__name" id="deal-4-name">River House Apartments</div>
+        <div class="deal__name" id="deal-4-name">River House</div>
         <div class="deal__loc" id="deal-4-loc">Highland, NY</div>
         <div class="deal__divider"></div>
         <div class="deal__metrics">
@@ -601,7 +603,7 @@ body {
             <div class="deal__metric-value" id="deal-4-price">$3,325,000</div>
           </div>
           <div>
-            <div class="deal__metric-value" id="deal-4-size">12 <span class="small">Units</span></div>
+            <div class="deal__metric-value" id="deal-4-size">12 Units</div>
           </div>
         </div>
       </div>
@@ -691,7 +693,7 @@ body {
       <label>Property Type</label>
       <input type="text" value="Multifamily" oninput="updateField('deal-4-type',this.value)">
       <label>Property Name</label>
-      <input type="text" value="River House Apartments" oninput="updateField('deal-4-name',this.value)">
+      <input type="text" value="River House" oninput="updateField('deal-4-name',this.value)">
       <label>City, State</label>
       <input type="text" value="Highland, NY" oninput="updateField('deal-4-loc',this.value)">
       <label>Sale Price</label>
