@@ -125,7 +125,7 @@ body {
 
 .hero__headline {
   font-size: 17pt; line-height: 1.08; letter-spacing: -0.035em;
-  color: #000000; font-weight: 600; margin-bottom: 4mm;
+  color: #000000; font-weight: 500; margin-bottom: 4mm;
 }
 .hero__headline .accent { color: var(--terra); }
 .hero__headline .dot { color: var(--orange) !important; font-style: normal; }
@@ -325,6 +325,20 @@ body {
   background: #ffffff;
   position: relative; overflow: hidden;
 }
+.agent {
+  display: flex; flex-direction: column;
+  gap: 0.3mm;
+  font-size: 5pt; line-height: 1.35;
+  color: rgba(0,0,0,0.55);
+  font-weight: 400; letter-spacing: 0.02em;
+  align-self: flex-start; margin-top: -2.5mm; margin-left: -4.5mm;
+}
+.agent__name {
+  font-size: 5.5pt; font-weight: 600;
+  color: rgba(0,0,0,0.72);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 0.3mm;
+}
 .quote__body {
   padding-left: 4mm; border-left: 0.8mm solid var(--orange);
   font-size: 9pt; line-height: 1.45; font-weight: 500;
@@ -446,7 +460,6 @@ body {
     background: none;
   }
   .deal__image img {
-    filter: brightness(1.12) contrast(0.95) saturate(1.05);
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     image-rendering: -webkit-optimize-contrast;
@@ -621,7 +634,12 @@ body {
   </section>
 
   <footer class="band quote">
-<div class="quote__badge">
+    <div class="agent">
+      <div class="agent__name" id="agent-name">Joe Ferrandino</div>
+      <div class="agent__line" id="agent-phone">914-497-4745</div>
+      <div class="agent__line" id="agent-email">jferrandino@northeastpcg.com</div>
+    </div>
+    <div class="quote__badge">
       <img src="images/CoStar_Power_Broker.png" alt="CoStar Power Broker">
     </div>
   </footer>
@@ -634,6 +652,16 @@ body {
 <button onclick="window.print()" style="background:#F8971D;border:none;color:#000;font-family:inherit;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:3px;cursor:pointer;">Print</button>
   </div>
   <div class="editor-body">
+
+    <div class="editor-deal">
+      <div class="editor-deal-header">Agent Info</div>
+      <label>Name</label>
+      <input type="text" value="Joe Ferrandino" oninput="updateField('agent-name',this.value)">
+      <label>Phone</label>
+      <input type="text" value="914-497-4745" oninput="updateField('agent-phone',this.value)">
+      <label>Email</label>
+      <input type="text" value="jferrandino@northeastpcg.com" oninput="updateField('agent-email',this.value)">
+    </div>
 
     <div class="editor-deal">
       <div class="editor-deal-header">Deal 1</div>
