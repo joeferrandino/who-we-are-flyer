@@ -79,7 +79,7 @@ body {
 }
 .hero__eyebrow::before,
 .section-eyebrow::before {
-  content: ''; width: 6mm; height: 0.6mm;
+  content: ''; width: 6mm; height: 1pt;
   background: var(--orange); flex-shrink: 0;
 }
 
@@ -93,12 +93,12 @@ body {
 }
 .head::after {
   content: ''; position: absolute; bottom: 0; left: 13mm; right: 13mm;
-  height: 0.25mm; background: var(--stone);
+  height: 0.5pt; background: var(--stone);
 }
 .head__logo     { height: 15mm; width: auto; display: block; margin-top: 0; }
 .head__meta     { display: flex; align-items: center; gap: 4mm; margin-top: 3mm; }
 .head__item     { font-size: 6pt; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #000000; line-height: 1; }
-.head__sep      { width: 0.25mm; height: 2.8mm; background: var(--stone); font-size: 0; line-height: 0; flex-shrink: 0; }
+.head__sep      { width: 0.5pt; height: 2.8mm; background: var(--stone); font-size: 0; line-height: 0; flex-shrink: 0; }
 
 /* ── WHO WE ARE / COVERAGE ────────────────────── */
 .hero-coverage {
@@ -193,7 +193,7 @@ body {
 .stat__circle {
   width: 25mm; height: 25mm;
   border-radius: 50%;
-  border: 0.4mm solid var(--orange);
+  border: 1pt solid var(--orange);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   flex-shrink: 0;
@@ -240,8 +240,8 @@ body {
 .deals__head .section-eyebrow { margin-top: 0; margin-bottom: 0; }
 .deal {
   background: #ffffff;
-  border: 0.25mm solid var(--hairline);
-  border-top: 0.5mm solid var(--orange);
+  border: 0.5pt solid var(--hairline);
+  border-top: 1pt solid var(--orange);
   display: flex; flex-direction: row;
   overflow: hidden; height: 42mm;
 }
@@ -249,7 +249,7 @@ body {
   width: 42mm; flex-shrink: 0;
   background: rgba(177,168,160,0.28);
   overflow: hidden;
-  border-right: 0.25mm solid var(--hairline);
+  border-right: 0.5pt solid var(--hairline);
   position: relative;
 }
 .deal__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -260,7 +260,7 @@ body {
 }
 .deal__image-placeholder-icon {
   width: 7mm; height: 7mm;
-  border: 0.4mm solid var(--stone);
+  border: 1pt solid var(--stone);
   display: flex; align-items: center; justify-content: center;
   color: var(--stone);
 }
@@ -289,7 +289,7 @@ body {
   font-size: 6.5pt; font-weight: 400; letter-spacing: normal;
   text-transform: none; color: #000000;
 }
-.deal__divider { height: 1px; background: var(--hairline); margin: 1mm 0; }
+.deal__divider { height: 0.5pt; background: var(--hairline); margin: 1mm 0; }
 .deal__metrics {
   display: flex; flex-direction: row;
   justify-content: space-between; align-items: flex-end;
@@ -302,7 +302,7 @@ body {
 .deal__metrics > div:first-child .deal__metric-value::before {
   content: '';
   display: inline-block;
-  width: 3mm; height: 0.4mm;
+  width: 3mm; height: 1pt;
   background: var(--orange);
   margin-right: 1.5mm;
   vertical-align: middle;
@@ -328,19 +328,19 @@ body {
 .agent {
   display: flex; flex-direction: column;
   gap: 0.3mm;
-  font-size: 5pt; line-height: 1.35;
-  color: rgba(0,0,0,0.55);
+  font-size: 5.5pt; line-height: 1.35;
+  color: rgba(0,0,0,0.7);
   font-weight: 400; letter-spacing: 0.02em;
-  align-self: flex-start; margin-top: -2.5mm; margin-left: -4.5mm;
+  align-self: flex-start; margin-top: -1.5mm; margin-left: -4.5mm;
 }
 .agent__name {
-  font-size: 5.5pt; font-weight: 600;
-  color: rgba(0,0,0,0.72);
+  font-size: 6pt; font-weight: 600;
+  color: rgba(0,0,0,0.85);
   letter-spacing: 0.08em; text-transform: uppercase;
   margin-bottom: 0.3mm;
 }
 .quote__body {
-  padding-left: 4mm; border-left: 0.8mm solid var(--orange);
+  padding-left: 4mm; border-left: 1.5pt solid var(--orange);
   font-size: 9pt; line-height: 1.45; font-weight: 500;
   font-style: italic; color: #000000; letter-spacing: -0.008em; margin-left: -6mm;
 }
@@ -363,7 +363,7 @@ body {
 .hero-coverage__left::after {
   content: ''; position: absolute; top: 35%; right: 0;
   transform: translateY(-50%);
-  width: 0.4mm; height: calc(100% - 58mm);
+  width: 0.5pt; height: calc(100% - 58mm);
   background: rgba(40,27,18,0.16);
   z-index: 3; pointer-events: none;
 }
