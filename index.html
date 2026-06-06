@@ -410,7 +410,18 @@ body {
   font-size: 9px; font-weight: 700;
   letter-spacing: 0.18em; text-transform: uppercase;
   color: #F8971D; margin-bottom: 6px;
+  display: flex; justify-content: space-between; align-items: center;
 }
+.editor-deal-move { display: flex; gap: 4px; }
+.editor-deal-move button {
+  background: #1a1a1a; border: 1px solid #383838; border-radius: 3px;
+  color: #e8e8e8; width: 22px; height: 18px;
+  font-size: 9px; cursor: pointer; padding: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--sans); letter-spacing: 0;
+}
+.editor-deal-move button:hover { border-color: #F8971D; color: #F8971D; }
+.editor-deal-move button:disabled { opacity: 0.25; cursor: not-allowed; }
 .editor-deal label {
   font-size: 8.5px; font-weight: 600;
   letter-spacing: 0.1em; text-transform: uppercase;
@@ -664,7 +675,13 @@ body {
     </div>
 
     <div class="editor-deal">
-      <div class="editor-deal-header">Deal 1</div>
+      <div class="editor-deal-header">
+        <span>Deal 1</span>
+        <div class="editor-deal-move">
+          <button type="button" onclick="moveDeal(this,-1)" title="Move up">&#9650;</button>
+          <button type="button" onclick="moveDeal(this,1)" title="Move down">&#9660;</button>
+        </div>
+      </div>
       <label>Property Photo</label>
       <div class="editor-photo-area">
         <img class="editor-photo-preview" id="prev-1">
@@ -683,7 +700,13 @@ body {
     </div>
 
     <div class="editor-deal">
-      <div class="editor-deal-header">Deal 2</div>
+      <div class="editor-deal-header">
+        <span>Deal 2</span>
+        <div class="editor-deal-move">
+          <button type="button" onclick="moveDeal(this,-1)" title="Move up">&#9650;</button>
+          <button type="button" onclick="moveDeal(this,1)" title="Move down">&#9660;</button>
+        </div>
+      </div>
       <label>Property Photo</label>
       <div class="editor-photo-area">
         <img class="editor-photo-preview" id="prev-2">
@@ -702,7 +725,13 @@ body {
     </div>
 
     <div class="editor-deal">
-      <div class="editor-deal-header">Deal 3</div>
+      <div class="editor-deal-header">
+        <span>Deal 3</span>
+        <div class="editor-deal-move">
+          <button type="button" onclick="moveDeal(this,-1)" title="Move up">&#9650;</button>
+          <button type="button" onclick="moveDeal(this,1)" title="Move down">&#9660;</button>
+        </div>
+      </div>
       <label>Property Photo</label>
       <div class="editor-photo-area">
         <img class="editor-photo-preview" id="prev-3">
@@ -721,7 +750,13 @@ body {
     </div>
 
     <div class="editor-deal">
-      <div class="editor-deal-header">Deal 4</div>
+      <div class="editor-deal-header">
+        <span>Deal 4</span>
+        <div class="editor-deal-move">
+          <button type="button" onclick="moveDeal(this,-1)" title="Move up">&#9650;</button>
+          <button type="button" onclick="moveDeal(this,1)" title="Move down">&#9660;</button>
+        </div>
+      </div>
       <label>Property Photo</label>
       <div class="editor-photo-area">
         <img class="editor-photo-preview" id="prev-4">
@@ -773,6 +808,42 @@ function updatePhoto(input, imgId, prevId) {
   };
   reader.readAsDataURL(file);
 }
+
+function moveDeal(button, direction) {
+  const editorDeal = button.closest('.editor-deal');
+  const dealEditors = Array.from(document.querySelectorAll('.editor-body > .editor-deal')).slice(1);
+  const idx = dealEditors.indexOf(editorDeal);
+  const newIdx = idx + direction;
+  if (newIdx < 0 || newIdx >= dealEditors.length) return;
+
+  const dealNodes = Array.from(document.querySelectorAll('.deals .deal'));
+  swapNodes(dealEditors[idx], dealEditors[newIdx]);
+  swapNodes(dealNodes[idx], dealNodes[newIdx]);
+  refreshDealLabels();
+}
+
+function swapNodes(a, b) {
+  const marker = document.createComment('swap');
+  a.parentNode.insertBefore(marker, a);
+  b.parentNode.insertBefore(a, b);
+  marker.parentNode.insertBefore(b, marker);
+  marker.remove();
+}
+
+function refreshDealLabels() {
+  const dealEditors = Array.from(document.querySelectorAll('.editor-body > .editor-deal')).slice(1);
+  dealEditors.forEach((el, i) => {
+    const label = el.querySelector('.editor-deal-header span');
+    if (label) label.textContent = 'Deal ' + (i + 1);
+    const buttons = el.querySelectorAll('.editor-deal-move button');
+    if (buttons.length === 2) {
+      buttons[0].disabled = (i === 0);
+      buttons[1].disabled = (i === dealEditors.length - 1);
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', refreshDealLabels);
 </script>
 
 </body>
